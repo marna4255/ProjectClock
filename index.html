@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="clock.css">
+    <!-- <script src="clock.js"></script> -->
+    <title>clock project</title>
+</head>
+<body id="bg">
+
+    <div id="clock"></div>
+   
+    
+  
+    <script>
+        let clock = document.getElementById('clock');
+        let body = document.getElementById('body');
+
+    function time(){
+        let d = new Date();
+        let h = d.getHours();
+        let m = d.getMinutes();
+        let s = d.getSeconds();
+        let arr = [h, m, s];
+    
+            for (let i = 0; i < (arr.length); i++){
+                if (arr[i] < 10 && i != 2) {
+                    arr[i] = "0" + arr[i] + ":";
+                }
+                else if(i == 2){
+                    arr[i] = String(arr[i]); 
+                    
+                }
+                else{
+                     arr[i] = String(arr[i]) + ":";
+                } 
+            }
+        clock.innerHTML = arr.join("") 
+        }
+
+        let redC =0;
+        let grrenC =0;
+        let blueC =0;
+
+        function setColor(){
+            redC +=10;
+            grrenC +=20;
+            blueC +=3;
+            bg.style.backgroundColor = `rgb( ${redC % 255} , ${grrenC % 255} ,  ${blueC % 255} ) `;
+            time();
+          
+        }
+
+        setInterval(setColor,1000)
+
+          
+    </script> 
+
+</body>
+</html>
